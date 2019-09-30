@@ -51,7 +51,7 @@ func (s *server) Start(address string) error {
 	return nil
 }
 
-// Stop attempts a graceful shutdown of the server
-func (s *server) Stop(ctx context.Context) {
+// Shutdown attempts a graceful shutdown of the server
+func (s *server) Shutdown(ctx context.Context) {
 	s.GracefulStop()
 }
