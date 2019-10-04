@@ -43,7 +43,7 @@ func (h *health) Append(healthCheckables ...healthCheckable) {
 // Will block so start in a go routine.
 func (h *health) Start(address string) error {
 
-	h.server = &http.Server{Addr: address}
+	h.server = &http.Server{Addr: address, Handler: h.Handler}
 
 	if err := h.server.ListenAndServe(); err != http.ErrServerClosed {
 		return err
