@@ -1,6 +1,7 @@
 package exec
 
 import (
+	"context"
 	"os"
 	"os/exec"
 	"strings"
@@ -36,4 +37,18 @@ func RunCommandSilent(dir string, name string, args ...string) error {
 		e.Dir = dir
 	}
 	return e.Run()
+}
+
+type Input struct {
+	Name string
+	Args []string
+}
+
+type Output struct {
+	Result []byte
+	Err    error
+}
+
+func StreamCommandsAndResults(ctx context.Context, dir string, in <-chan Input, out chan<- Output) {
+
 }
